@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
+    function index()
+    {
+        return view('todo.index');
+    }
     function create()
     {
         return view('todo.create');
