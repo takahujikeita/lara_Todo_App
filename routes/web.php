@@ -20,8 +20,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/index', function () {
+    return view('todo.index');
+});
 Route::get('/create', function () {
     return view('todo.create');
 });
