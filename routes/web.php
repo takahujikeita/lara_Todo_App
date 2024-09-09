@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\TaskController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,21 +20,21 @@ Route::get('/', function () {
 
 Auth::routes();
 
-<<<<<<< HEAD
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/index', function () {
-    return view('todo.index');
-});
-=======
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
->>>>>>> 95e245ab182288afbde7dbd0edf8a12fad65c43e
-Route::get('/create', function () {
-    return view('todo.create');
-});
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
+
+Route::get('/tasks', [App\Http\Controllers\TaskController::class, 'index'])->name('task.index');
+
+
+//create.blade.phpを表示する
+Route::get('/create', [App\Http\Controllers\TaskController::class, 'create'])->name('task.create');
 
 //とーみ追加：表示用
-Route::get('/edit', [App\Http\Controllers\HomeController::class, 'edit'])->name('edit');
+//edit.blade.phpを表示する
+Route::get('/edit', [App\Http\Controllers\TaskController::class, 'edit'])->name('task.edit');
 
