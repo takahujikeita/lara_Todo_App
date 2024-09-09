@@ -4,9 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Todo List</title>
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 </head>
 <body>
-    
+    <div class="container">
+        <header>
+            <h1 class=logo>Todo List</h1>
+            <a href="#" class="btn btn-primary">新規作成</a>
+        </header>
+        <table>
+            <thead>
+                <tr>
+                    <th>タイトル</th>
+                    <th>内容</th>
+                    <th>アクション</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+                <tr>
+                    <td>タイトル</td>
+                    <td>内容</td>
+                    <td>
+                    <a href="#" class="btn btn-edit">編集</a>
+                        <!-- 削除ボタンも必要に応じて追加できます -->
+                        <form action="#" method="POST" style="display:inline;"> 
+                            {{-- @csrf
+                            @method('DELETE') --}}
+                            <button type="submit" class="btn btn-delete">削除</button>
+                        </form> 
+                    </td>
+                </tr>
+            
+            </tbody>
+            <tbody>
+            
+                <tr>
+                    <td>タイトル</td>
+                    <td>内容</td>
+                    <td>
+                        <a href="#" class="btn btn-edit">編集</a>
+                        <!-- 削除ボタンも必要に応じて追加できます -->
+                        <form action="#" method="POST" style="display:inline;"> 
+                            {{-- @csrf
+                            @method('DELETE') --}}
+                            <button type="submit" class="btn btn-delete">削除</button>
+                        </form> 
+                    </td>
+                </tr>
+            
+            </tbody>
+            <tbody>
+            
+                <tr>
+                    <td>タイトル</td>
+                    <td>内容</td>
+                    <td>
+                        <a href="#" class="btn btn-edit">編集</a>
+                        <!-- 削除ボタンも必要に応じて追加できます -->
+                        <form action="#" method="POST" style="display:inline;"> 
+                            {{-- @csrf
+                            @method('DELETE') --}}
+                            <button type="submit" class="btn btn-delete">削除</button>
+                        </form> 
+                    </td>
+                </tr>
+            
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

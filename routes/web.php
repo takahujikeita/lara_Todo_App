@@ -20,7 +20,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+Route::get('/tasks', [App\Http\Controllers\TaskController::class, 'index'])->name('task.index');
+
 
 //create.blade.phpを表示する
 Route::get('/create', [App\Http\Controllers\TaskController::class, 'create'])->name('task.create');
