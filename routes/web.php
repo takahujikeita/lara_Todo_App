@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\TaskController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,12 +22,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
-Route::get('/create', function () {
-    return view('todo.create');
-});
-
+//create.blade.phpを表示する
+Route::get('/create', [App\Http\Controllers\TaskController::class, 'create'])->name('task.create');
 
 //とーみ追加：表示用
-Route::get('/edit', [App\Http\Controllers\HomeController::class, 'edit'])->name('edit');
+//edit.blade.phpを表示する
+Route::get('/edit', [App\Http\Controllers\TaskController::class, 'edit'])->name('task.edit');
 
