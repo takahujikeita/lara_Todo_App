@@ -20,3 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//とーみ追加：表示用
+Route::get('/edit', [App\Http\Controllers\HomeController::class, 'edit'])->name('edit');
