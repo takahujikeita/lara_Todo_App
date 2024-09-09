@@ -22,6 +22,12 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
 Route::get('/create', function () {
     return view('todo.create');
 });
+
+
+//とーみ追加：表示用
+Route::get('/edit', [App\Http\Controllers\HomeController::class, 'edit'])->name('edit');
+
