@@ -20,19 +20,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 //index.blade.phpを表示する
 Route::get('/tasks', [App\Http\Controllers\TaskController::class, 'index'])->name('task.index');
 
-
 //create.blade.phpを表示する
-Route::get('/create', [App\Http\Controllers\TaskController::class, 'create'])->name('task.create');
+Route::get('/tasks/create', [App\Http\Controllers\TaskController::class, 'create'])->name('task.create');
+
+//新規投稿保存、一覧表示画面に内容を保存
+Route::post('/tasks', [App\Http\Controllers\TaskController::class, 'store'])->name('task.store');
 
 
 //edit.blade.phpを表示する(！後でid取得できるように)
@@ -43,6 +41,7 @@ Route::put('/tasks/{id}', [App\Http\Controllers\TaskController::class, 'update']
 
 //削除処理（！後でid取得できるように）
 Route::delete('/tasks/{id}', [App\Http\Controllers\TaskController::class, 'destroy'])->name('task.destroy');
+
 
 
 
