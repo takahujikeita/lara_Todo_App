@@ -20,21 +20,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 //index.blade.phpを表示する
 Route::get('/tasks', [App\Http\Controllers\TaskController::class, 'index'])->name('task.index');
 
-
 //create.blade.phpを表示する
-Route::get('/create', [App\Http\Controllers\TaskController::class, 'create'])->name('task.create');
+Route::get('/tasks/create', [App\Http\Controllers\TaskController::class, 'create'])->name('task.create');
 
+//新規投稿保存、一覧表示画面に内容を保存
+Route::post('/tasks', [App\Http\Controllers\TaskController::class, 'store'])->name('task.store');
 
 //edit.blade.phpを表示する
-Route::get('/edit', [App\Http\Controllers\TaskController::class, 'edit'])->name('task.edit');
+Route::get('/tasks/edit', [App\Http\Controllers\TaskController::class, 'edit'])->name('task.edit');
 
