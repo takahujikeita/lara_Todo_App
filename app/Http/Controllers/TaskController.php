@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 use App\Models\Task;
@@ -10,9 +11,12 @@ use Illuminate\Support\Facades\Auth;
 class TaskController extends Controller
 {
 
+    //indexメソッドの記述
     function index()
     {
-        return view('todo.index');
+        $tasks = Task::all();
+        // dd($tasks);
+        return view('todo.index', compact('tasks'));
     }
     //createメソッドの記述
     function create()
