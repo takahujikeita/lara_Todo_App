@@ -35,6 +35,15 @@ Route::get('/tasks', [App\Http\Controllers\TaskController::class, 'index'])->nam
 Route::get('/create', [App\Http\Controllers\TaskController::class, 'create'])->name('task.create');
 
 
-//edit.blade.phpを表示する
-Route::get('/edit', [App\Http\Controllers\TaskController::class, 'edit'])->name('task.edit');
+//edit.blade.phpを表示する(！後でid取得できるように)
+Route::get('/tasks/{id}/edit', [App\Http\Controllers\TaskController::class, 'edit'])->name('task.edit');
+
+//更新処理（！後でid取得できるように）
+Route::put('/tasks/{id}', [App\Http\Controllers\TaskController::class, 'update'])->name('task.update');
+
+//削除処理（！後でid取得できるように）
+Route::delete('/tasks/{id}', [App\Http\Controllers\TaskController::class, 'destroy'])->name('task.destroy');
+
+
+
 

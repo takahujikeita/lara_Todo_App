@@ -21,9 +21,32 @@ class TaskController extends Controller
         return view('todo.create');
     }
 
+
     //editメソッドの記述
-    function edit()
+    function edit($id)
     {
-        return view('todo.edit');
+        $task = Task::find($id);
+        return view('todo.edit', compact('task'));
+    }
+
+    function update(Request $request, $id)
+    {
+        $task = Task::find($id);
+
+        $task -> title = $request -> title;
+        $task -> contents = $request -> contents;
+        $task -> image_at = $request -> image_at;
+        $task->save();
+
+        return redirect()->route('task.index')->with('success','タスクが更新されました。');
+    }
+
+    function destroy($id)
+    {
+        $task = Task::find($id);
+        $task -> delete();
+
+        return redirect()->route('task.index'); //ルートは仮
+
     }
 }
