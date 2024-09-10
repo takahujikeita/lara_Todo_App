@@ -34,7 +34,7 @@ Route::get('/tasks', [App\Http\Controllers\TaskController::class, 'index'])->nam
 //create.blade.phpを表示する
 Route::get('/create', [App\Http\Controllers\TaskController::class, 'create'])->name('task.create');
 
-//とーみ追加：表示用
+
 //edit.blade.phpを表示する
 Route::get('/edit', [App\Http\Controllers\TaskController::class, 'edit'])->name('task.edit');
 

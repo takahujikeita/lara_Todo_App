@@ -6,44 +6,85 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/edit.css') }}">
   </head>
 </head>
+
 <body>
-  <div class="container">
-    <div class="row justify-content-center">
-      <form action="">
-        @csrf
-        @method('put')
-        <div class="mb-3">
-          <label for="#" class="form-label" >title</label>
-          <input type="text" class="form-control" id="formGroupExampleInput" value="">
-          <small>30文字以内</small>
-        </div>
-        <div class="mb-3">
-          <label for="#" class="form-label">contents</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" value=""></textarea>
-          <small>140文字以内</small>
-        </div>
-        <div class="row g-3">
-          <div class="col">
-            <input type="file" class="form-control" placeholder="First name" aria-label="First name">
-          </div>
-          <div class="col">
-            <input type="image" class="form-control" value="" name="image" alt="現在設定中の画像">
-          </div>
-        </div>
-        <div class="row g-3">
-          <div class="col">
-            <input type="submit" class="form-control" value="update" action="#"> 
-          </div>
-          <div class="col">
-            <input type="button" class="form-control" value="delete" action="#">
-          </div>
-        </div>
-      </form>
+{{-- バランス確認用 --}}
+  <head>
+    <div class="header">
+      <div class="header-left">
+        <h1>ToDo</h1>
+      </div>
+      <div class="header-right">
+      </div>
+      <hr>
     </div>
-  </div>
-  
+  </head>
+{{-- バランス確認用 --}}
+
+  <main>
+    <div class="container">
+      <div>
+        <form action="" method="POST" class="row justify-content-center">
+          <h2 class="text-center mt-3 mb-5">EDIT</h2>
+          @csrf
+          @method('put')
+
+          <div class="col-md-10">
+            <label for="#" class="form-label fs-3" >title</label>
+            <input type="text" class="form-control form-control-lg border-dark-subtle" id="formGroupExampleInput" value="">
+            <small><p class="text-end">30文字以内</p></small>
+          </div>
+
+          <div class="col-md-10">
+            <label for="#" class="form-label fs-3">contents</label>
+            <textarea class="form-control form-control-lg border-dark-subtle" id="exampleFormControlTextarea1" rows="5" value=""></textarea>
+            <small><p class="text-end">140文字以内</p></small>
+          </div>
+          <dic class="col-md-10">
+            <div class="row mb-5">
+              <label for="#" class="form-label fs-3">image</label>
+              <div class="col-md-7">
+                <input type="file" class="form-control form-control-lg border-dark-subtle">
+              </div>
+              <div class="col-md-5">
+                <img src="" class="form-control form-control-lg img-thumbnail text-primary-emphasis border-dark-subtle" alt="現在設定中の画像">
+              </div>
+            </div>
+          </dic>
+
+          <div class="d-md-flex justify-content-md-center mb-5">
+            <div class="col-md-3">
+              <input type="submit" class="form-control btn btn-primary btn-lg" value="update" action="#"> 
+            </div>
+          </div>
+        </form>
+
+        <div class="d-md-flex justify-content-between mb-5">
+          <form>
+            <div class="col-md-15">
+              <input type="button" class="form-control btn btn-outline-secondary" value="＜ cancel" action="#"> 
+            </div>
+          </form>
+          <form action="" method="POST">
+            @csrf
+            @method('delete')
+              <div class="col-md-15">
+                <input type="button" class="btn-destroy btn btn-outline-danger" value="X delete" action="#" onclick='return confirm("Really？");'>
+              </div>
+          </form>
+        </div>
+
+
+      </div>
+    </div>
+  </main>
+  <footer>
+    <hr>
+    <small><p>&copy;2024_77期</p></small>
+  </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
