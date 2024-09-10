@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth')->except('edit');  //ー＞以降：edit表示する際のログイン画面遷移を回避
+        $this->middleware('auth');
     }
 
     /**
@@ -24,12 +24,5 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
-    }
-
-
-    //とーみ追加：表示用
-    public function edit()
-    {
-        return view('todo.edit');
     }
 }

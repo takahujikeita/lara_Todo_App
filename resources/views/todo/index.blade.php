@@ -27,7 +27,7 @@
                     <td>{{$task->title}}</td>
                     <td>{{$task->contents}}</td>
                     <td>
-                    <a href="#" class="btn btn-edit">編集</a>
+                    <a href="{{ route('task.edit', $task->id) }}" class="btn btn-edit">編集</a>
                         <!-- 削除ボタンも必要に応じて追加できます -->
                         <form action="#" method="POST" style="display:inline;"> 
                             {{-- @csrf
