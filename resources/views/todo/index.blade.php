@@ -38,8 +38,8 @@
                 </tr>
             
             </tbody>
+                {{-- CSS確認用 --}}
             <tbody>
-            
                 <tr>
                     <td>タイトル</td>
                     <td>内容</td>
@@ -72,6 +72,7 @@
                 </tr>
             
             </tbody>
+            {{-- CSS確認用 --}}
         </table>
     </div>
 </body>
