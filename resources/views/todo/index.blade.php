@@ -21,11 +21,11 @@
                     <th>アクション</th>
                 </tr>
             </thead>
+            @foreach($tasks as $task)
             <tbody>
-            
                 <tr>
-                    <td>タイトル</td>
-                    <td>内容</td>
+                    <td>{{$task->title}}</td>
+                    <td>{{$task->contents}}</td>
                     <td>
                     <a href="#" class="btn btn-edit">編集</a>
                         <!-- 削除ボタンも必要に応じて追加できます -->
@@ -36,42 +36,8 @@
                         </form> 
                     </td>
                 </tr>
-            
             </tbody>
-            <tbody>
-            
-                <tr>
-                    <td>タイトル</td>
-                    <td>内容</td>
-                    <td>
-                        <a href="#" class="btn btn-edit">編集</a>
-                        <!-- 削除ボタンも必要に応じて追加できます -->
-                        <form action="#" method="POST" style="display:inline;"> 
-                            {{-- @csrf
-                            @method('DELETE') --}}
-                            <button type="submit" class="btn btn-delete">削除</button>
-                        </form> 
-                    </td>
-                </tr>
-            
-            </tbody>
-            <tbody>
-            
-                <tr>
-                    <td>タイトル</td>
-                    <td>内容</td>
-                    <td>
-                        <a href="#" class="btn btn-edit">編集</a>
-                        <!-- 削除ボタンも必要に応じて追加できます -->
-                        <form action="#" method="POST" style="display:inline;"> 
-                            {{-- @csrf
-                            @method('DELETE') --}}
-                            <button type="submit" class="btn btn-delete">削除</button>
-                        </form> 
-                    </td>
-                </tr>
-            
-            </tbody>
+            @endforeach
         </table>
     </div>
 </body>
