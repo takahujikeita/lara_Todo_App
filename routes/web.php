@@ -27,7 +27,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-
+//index.blade.phpを表示する
 Route::get('/tasks', [App\Http\Controllers\TaskController::class, 'index'])->name('task.index');
 
 
