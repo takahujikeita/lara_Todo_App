@@ -43,7 +43,8 @@
             <div class="bg-white p-4 rounded-lg shadow-md">
                 <div class=" h-40 flex items-center justify-center">
                     {{-- <span class="text-white text-xl">画像</span> --}}
-                    <img src="{{ $task->image_at }}" alt="">
+                    {{-- <img src="{{ $task->image_at }}" alt=""> --}}
+                    <img src="{{ asset('storage/' . $task->image_at) }}" alt="">
                 </div>
                 <h2 class="text-xl font-semibold mt-4">{{$task->title}}</h2>
                 <p class="text-gray-600">{{$task->contents}}</p>
