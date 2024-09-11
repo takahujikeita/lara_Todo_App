@@ -13,9 +13,16 @@ class TaskController extends Controller
     function index()
     {
         $tasks = Task::all();
+
+
+        $tasks = Task::orderByRaw('COALESCE(updated_at, created_at) DESC')->get();
+        
         // dd($tasks);
         return view('todo.index', compact('tasks'));
     }
+
+
+    
     //createメソッドの記述
     function create()
     {
@@ -28,12 +35,12 @@ class TaskController extends Controller
     {
 
         // バリデーションを追加
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'contents' => 'required|string',
-            'image_at' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // 画像のサイズや拡張子のバリデーション
+        // $request->validate([
+        //     'title' => 'required|string|max:255',
+        //     'contents' => 'required|string',
+        //     'image_at' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // 画像のサイズや拡張子のバリデーション
 
-        ]);
+        // ]);
 
         // dd($request);
         $task = new Task;
@@ -78,8 +85,15 @@ class TaskController extends Controller
         $task = Task::find($id);
         $task->delete();
 
-        return redirect()->route('task.index'); //ルートは仮
+        return redirect()->route('task.index'); //一覧画面へ
     }
-    
-}
 
+    function getUserName(Request $request)
+    {
+        $userName = $request->user_id()->name;
+
+        return view('layouts.header',['userName' => $userName]);
+    }
+
+
+}
