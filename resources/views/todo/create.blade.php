@@ -10,27 +10,8 @@
 
 </head>
 <body>
-
-    {{-- <div class="container mt-5">
-        <div><h1>投稿してみよう！</h1></div>
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <form action="#" method="POST">
-        <div class="form-group">
-          <label>タイトル</label>
-          <input type="text" class="form-control" placeholder="タイトルを入力して下さい" name="title">
-        </div>
-        <div class="form-group">
-          <label>内容</label>
-          <textarea class="form-control" placeholder="内容" rows="5" name="body">
-                    </textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">作成</button>
-      </form>
-  </div>
-</div>
-</div> --}}
-
+@extends('layouts.header')
+@section('contents')
 <main>
   <div class="container">
     <div>
@@ -64,14 +45,15 @@
         </div>
       <div class="d-md-flex justify-content-between mb-5">
           <div class="col-md-15">
-            <input type="button" class="form-control btn btn-outline-secondary" value="＜ cancel" action="{{route('task.index')}}">
-            {{-- <a href="{{route('task.index')}}"class="form-control btn btn-outline-secondary" ></a>  --}}
+            <a href="{{route('task.index')}}">
+              <input type="button" class="form-control btn btn-outline-secondary" value="＜ cancel" action="{{route('task.index')}}">
+            </a>
           </div>
     </form>
     </div>
     </div>
   </div>
 </main>
-
+@endsection
 </body>
 </html>
