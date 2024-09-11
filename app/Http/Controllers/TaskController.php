@@ -34,13 +34,13 @@ class TaskController extends Controller
     function store(Request $request)
     {
 
-        // バリデーションを追加
-        // $request->validate([
-        //     'title' => 'required|string|max:255',
-        //     'contents' => 'required|string',
-        //     'image_at' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // 画像のサイズや拡張子のバリデーション
+        //バリデーションを追加
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'contents' => 'required|string',
+            'image_at' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // 画像のサイズや拡張子のバリデーション
 
-        // ]);
+        ]);
 
         // dd($request);
         $task = new Task;
