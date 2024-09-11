@@ -1,44 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Todo List</title>
-    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    <title>ToDo App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <h1 class=logo>Todo List</h1>
-            <a href="#" class="btn btn-primary">新規作成</a>
-        </header>
-        <table>
-            <thead>
-                <tr>
-                    <th>タイトル</th>
-                    <th>内容</th>
-                    <th>アクション</th>
-                </tr>
-            </thead>
+
+<body class="bg-gray-100">
+    <header class="bg-white p-4 shadow-md flex justify-between items-center">
+        <h1 class="text-3xl font-bold">ToDo</h1>
+        <div class="flex items-center space-x-4">
+            <input type="text" placeholder="検索" class="border border-gray-300 p-2 rounded-md">
+            <a href="{{route('task.create')}}">
+                <button class="bg-yellow-400 text-white py-2 px-4 rounded-md">新規投稿</button>
+            </a>
+            <div class="text-gray-700">User Name</div>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- ToDo Card -->
+            {{-- <div class="bg-white p-4 rounded-lg shadow-md">
+                <div class="bg-yellow-400 h-40 flex items-center justify-center">
+                    <span class="text-white text-xl">画像</span>
+                </div>
+                <h2 class="text-xl font-semibold mt-4">タイトル</h2>
+                <p class="text-gray-600">説明（description）</p>
+                <div class="flex justify-between items-center mt-4">
+                    <button class="text-pink-500"><i class="far fa-heart"></i> ♥</button>
+                    <div class="space-x-2">
+                        <button class="bg-blue-500 text-white py-1 px-4 rounded-md">編集</button>
+                        <button class="bg-red-500 text-white py-1 px-4 rounded-md">削除</button>
+                    </div>
+                </div>
+            </div> --}}
+
+            <!-- 繰り返し -->
             @foreach($tasks as $task)
-            <tbody>
-                <tr>
-                    <td>{{$task->title}}</td>
-                    <td>{{$task->contents}}</td>
-                    <td>
-                    <a href="{{ route('task.edit', $task->id) }}" class="btn btn-edit">編集</a>
-                        <!-- 削除ボタンも必要に応じて追加できます -->
-                        <form action="#" method="POST" style="display:inline;"> 
-                            {{-- @csrf
-                            @method('DELETE') --}}
-                            <button type="submit" class="btn btn-delete">削除</button>
-                        </form> 
-                    </td>
-                </tr>
-            </tbody>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <div class=" h-40 flex items-center justify-center">
+                    {{-- <span class="text-white text-xl">画像</span> --}}
+                    <img src="{{ $task->image_at }}" alt="">
+                </div>
+                <h2 class="text-xl font-semibold mt-4">{{$task->title}}</h2>
+                <p class="text-gray-600">{{$task->contents}}</p>
+                <div class="flex justify-between items-center mt-4">
+                    <button class="text-pink-500"><i class="far fa-heart"></i> ♥</button>
+                    <div class="space-x-2">
+                        <a href="{{ route('task.edit', $task->id) }}">
+                            <button class="bg-blue-500 text-white py-1 px-4 rounded-md">編集</button>
+                        </a>
+                        <form action="" method="POST">
+                            <button class="bg-red-500 text-white py-1 px-4 rounded-md">削除</button>
+                        </form>
+                        
+                    </div>
+                </div>
+            </div>
             @endforeach
-        </table>
-    </div>
+            <!-- 上記のカードを必要な数だけ繰り返します -->
+        </div>
+    </main>
 </body>
+
 </html>
