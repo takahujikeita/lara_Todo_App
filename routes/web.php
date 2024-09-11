@@ -22,9 +22,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
 //index.blade.phpを表示する
-Route::get('/tasks', [App\Http\Controllers\TaskController::class, 'index'])->name('task.index');
+//task,indexにアクセスするユーザーにアクセスするユーザーの認証
+Route::get('/tasks', [App\Http\Controllers\TaskController::class, 'index'])->name('task.index')->middleware('auth');;
 
 //create.blade.phpを表示する
 Route::get('/tasks/create', [App\Http\Controllers\TaskController::class, 'create'])->name('task.create');

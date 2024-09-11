@@ -1,25 +1,5 @@
-<!DOCTYPE html>
-<html lang="ja">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToDo App</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-
-<body class="bg-gray-100">
-    <header class="bg-white p-4 shadow-md flex justify-between items-center">
-        <h1 class="text-3xl font-bold">ToDo</h1>
-        <div class="flex items-center space-x-4">
-            <input type="text" placeholder="検索" class="border border-gray-300 p-2 rounded-md">
-            <a href="{{route('task.create')}}">
-                <button class="bg-yellow-400 text-white py-2 px-4 rounded-md">新規投稿</button>
-            </a>
-            <div class="text-gray-700">User Name</div>
-        </div>
-    </header>
-
+@extends('layouts.header')
+@section('contents')
     <main class="container mx-auto p-6">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- ToDo Card -->
@@ -64,6 +44,6 @@
             <!-- 上記のカードを必要な数だけ繰り返します -->
         </div>
     </main>
-</body>
+    @endsection
 
 </html>
