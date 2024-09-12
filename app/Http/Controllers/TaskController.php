@@ -13,15 +13,23 @@ class TaskController extends Controller
     //indexメソッドの記述
     function index()
     {
+
+        $tasks = Task::all();
+
+
+        $tasks = Task::orderByRaw('COALESCE(updated_at, created_at) DESC')->paginate(8);
+
+
         // ログインユーザーのタスクを取得し、updated_atかcreated_atの順で並べる
         $tasks = auth()->user()->tasks()->orderByRaw('COALESCE(updated_at, created_at) DESC')->get();
         
         // dd($tasks);
+
         return view('todo.index', compact('tasks'));
     }
 
 
-    
+
     //createメソッドの記述
     function create()
     {
@@ -102,8 +110,6 @@ class TaskController extends Controller
     {
         $userName = $request->user_id()->name;
 
-        return view('layouts.header',['userName' => $userName]);
+        return view('layouts.header', ['userName' => $userName]);
     }
-
-
 }
