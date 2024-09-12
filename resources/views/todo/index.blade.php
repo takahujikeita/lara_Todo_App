@@ -34,6 +34,11 @@
             @endforeach
             <!-- 上記のカードを必要な数だけ繰り返します -->
         </div>
+    <div class="fixed mr-6 md:mr-20 bottom-10 right-0  bg-white shadow-md" >
+        <div class="mt-6">
+        {{ $tasks->links('pagination::tailwind') }}
+        </div>
+    </div>
     </main>
     @endsection
 

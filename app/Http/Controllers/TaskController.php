@@ -15,14 +15,13 @@ class TaskController extends Controller
         $tasks = Task::all();
 
 
-        $tasks = Task::orderByRaw('COALESCE(updated_at, created_at) DESC')->get();
-        
-        // dd($tasks);
+        $tasks = Task::orderByRaw('COALESCE(updated_at, created_at) DESC')->paginate(8);
+
         return view('todo.index', compact('tasks'));
     }
 
 
-    
+
     //createメソッドの記述
     function create()
     {
@@ -92,8 +91,6 @@ class TaskController extends Controller
     {
         $userName = $request->user_id()->name;
 
-        return view('layouts.header',['userName' => $userName]);
+        return view('layouts.header', ['userName' => $userName]);
     }
-
-
 }
