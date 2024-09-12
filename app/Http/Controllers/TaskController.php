@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,10 +13,8 @@ class TaskController extends Controller
     //indexメソッドの記述
     function index()
     {
-        $tasks = Task::all();
-
-
-        $tasks = Task::orderByRaw('COALESCE(updated_at, created_at) DESC')->get();
+        // ログインユーザーのタスクを取得し、updated_atかcreated_atの順で並べる
+        $tasks = auth()->user()->tasks()->orderByRaw('COALESCE(updated_at, created_at) DESC')->get();
         
         // dd($tasks);
         return view('todo.index', compact('tasks'));
