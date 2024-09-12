@@ -14,14 +14,14 @@ class TaskController extends Controller
     function index()
     {
 
-        $tasks = Task::all();
+        // $tasks = Task::all();
 
 
-        $tasks = Task::orderByRaw('COALESCE(updated_at, created_at) DESC')->paginate(8);
+        // $tasks = Task::orderByRaw('COALESCE(updated_at, created_at) DESC')->paginate(8);
 
 
         // ログインユーザーのタスクを取得し、updated_atかcreated_atの順で並べる
-        $tasks = auth()->user()->tasks()->orderByRaw('COALESCE(updated_at, created_at) DESC')->get();
+        $tasks = auth()->user()->tasks()->orderByRaw('COALESCE(updated_at, created_at) DESC')->paginate(8);
         
         // dd($tasks);
 
