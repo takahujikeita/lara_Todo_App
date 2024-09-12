@@ -17,7 +17,7 @@
   <main>
     <div class="container">
       <div>
-        <form action="{{ route('task.update', $task->id) }}" method="POST" class="row justify-content-center">
+        <form action="{{ route('task.update', $task->id) }}" method="POST" class="row justify-content-center" enctype="multipart/form-data">
           <h2 class="text-center mt-3 mb-5">EDIT</h2>
           @csrf
           @method('put')
@@ -37,10 +37,10 @@
             <div class="row mb-5">
               <label for="#" class="form-label fs-3">image</label>
               <div class="col-md-7">
-                <input type="file" name="image_at" class="form-control form-control-lg border-dark-subtle">
+                <input type="file" class="form-control form-control-lg border-dark-subtle" name="image_at" required>
               </div>
               <div class="col-md-5">
-                <img src="{{ $task->image_at }}" class="form-control form-control-lg img-thumbnail text-primary-emphasis border-dark-subtle" alt="現在設定中の画像">
+                <img src="{{ asset('storage/' . $task->image_at) }}" class="form-control form-control-lg img-thumbnail text-primary-emphasis border-dark-subtle" alt="現在設定中の画像">
               </div>
             </div>
           </dic>
@@ -55,7 +55,7 @@
         <div class="d-md-flex justify-content-between mb-5">
           <form>
             <div class="col-md-15">
-              <input type="button" class="form-control btn btn-outline-secondary" value="＜ cancel" action="#"> 
+              <button type="button" class="form-control btn btn-outline-secondary" onclick="window.location='{{ route('task.index') }}'">＜cancel</button> 
             </div>
           </form>
 

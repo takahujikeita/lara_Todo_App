@@ -46,7 +46,7 @@
       <div class="d-md-flex justify-content-between mb-5">
           <div class="col-md-15">
             <a href="{{route('task.index')}}">
-              <input type="button" class="form-control btn btn-outline-secondary" value="＜ cancel" action="{{route('task.index')}}">
+              <input type="button" class="form-control btn btn-outline-secondary" value="＜ cancel" action="#">
             </a>
           </div>
     </form>
