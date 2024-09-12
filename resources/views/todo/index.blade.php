@@ -26,6 +26,10 @@
                     {{-- <img src="{{ $task->image_at }}" alt=""> --}}
                     <img src="{{ asset('storage/' . $task->image_at) }}" alt="">
                 </div>
+                {{-- いらなかったら消して！！ --}}
+                <small><p class="text-gray-600">更新日： {{ $task->updated_at ?? $task->created_at }}</p></small> 
+
+
                 <h2 class="text-xl font-semibold mt-4">{{$task->title}}</h2>
                 <p class="text-gray-600">{{$task->contents}}</p>
                 <div class="flex justify-between items-center mt-4">
@@ -34,7 +38,9 @@
                         <a href="{{ route('task.edit', $task->id) }}">
                             <button class="bg-blue-500 text-white py-1 px-4 rounded-md">編集</button>
                         </a>
-                        <form action="" method="POST">
+                        <form action="{{ route('task.destroy', $task->id) }}" method="POST">
+                            @csrf
+                            @method('delete')
                             <button class="bg-red-500 text-white py-1 px-4 rounded-md">削除</button>
                         </form>
                         

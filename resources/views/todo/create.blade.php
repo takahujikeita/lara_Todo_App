@@ -15,7 +15,7 @@
 <main>
   <div class="container">
     <div>
-    <form action=" {{route('task.store')}} " method="POST" class="row justify-content-center" enctype="multipart/form-data">
+    <form action=" {{ route('task.store') }} " method="POST" class="row justify-content-center" enctype="multipart/form-data">
         @csrf
 
         <h2 class="text-center mt-3 mb-5">投稿してみよう！</h2>

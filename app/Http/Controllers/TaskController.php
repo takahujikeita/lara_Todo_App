@@ -13,9 +13,16 @@ class TaskController extends Controller
     function index()
     {
         $tasks = Task::all();
+
+
+        $tasks = Task::orderByRaw('COALESCE(updated_at, created_at) DESC')->get();
+        
         // dd($tasks);
         return view('todo.index', compact('tasks'));
     }
+
+
+    
     //createメソッドの記述
     function create()
     {
@@ -27,7 +34,7 @@ class TaskController extends Controller
     function store(Request $request)
     {
 
-        // バリデーションを追加
+        //バリデーションを追加
         $request->validate([
             'title' => 'required|string|max:255',
             'contents' => 'required|string',
@@ -78,8 +85,15 @@ class TaskController extends Controller
         $task = Task::find($id);
         $task->delete();
 
-        return redirect()->route('task.index'); //ルートは仮
+        return redirect()->route('task.index'); //一覧画面へ
     }
-    
-}
 
+    function getUserName(Request $request)
+    {
+        $userName = $request->user_id()->name;
+
+        return view('layouts.header',['userName' => $userName]);
+    }
+
+
+}
