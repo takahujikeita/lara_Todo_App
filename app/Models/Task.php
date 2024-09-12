@@ -11,4 +11,9 @@ class Task extends Model
 
     //更新の度にupdated_at取得
     public $timestamps = true; 
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
