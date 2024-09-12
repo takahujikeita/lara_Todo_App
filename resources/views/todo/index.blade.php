@@ -4,11 +4,13 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- 繰り返し -->
             @foreach($tasks as $task)
+            {{-- {{ dd($task->image_at) }} --}}
             <div class="bg-white p-4 rounded-lg shadow-md">
                 <div class=" h-40 flex items-center justify-center">
                     {{-- <span class="text-white text-xl">画像</span> --}}
                     {{-- <img src="{{ $task->image_at }}" alt=""> --}}
                     <img src="{{ asset('storage/' . $task->image_at) }}" alt="" class="h-full object-cover">
+                    
                 </div>
                 {{-- いらなかったら消して！！ --}}
                 <small><p class="text-gray-600">更新日： {{ $task->updated_at ?? $task->created_at }}</p></small> 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Task;
+use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,10 +13,17 @@ class TaskController extends Controller
     //indexメソッドの記述
     function index()
     {
+
         $tasks = Task::all();
 
 
         $tasks = Task::orderByRaw('COALESCE(updated_at, created_at) DESC')->paginate(8);
+
+
+        // ログインユーザーのタスクを取得し、updated_atかcreated_atの順で並べる
+        $tasks = auth()->user()->tasks()->orderByRaw('COALESCE(updated_at, created_at) DESC')->get();
+        
+        // dd($tasks);
 
         return view('todo.index', compact('tasks'));
     }
@@ -34,13 +42,11 @@ class TaskController extends Controller
     {
 
         //バリデーションを追加
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'contents' => 'required|string',
-            'image_at' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // 画像のサイズや拡張子のバリデーション
-
-        ]);
-
+            $request->validate([
+                'title' => 'required|string|max:255',
+                'contents' => 'required|string',
+                'image_at' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // 画像のサイズや拡張子のバリデーション
+            ]);
         // dd($request);
         $task = new Task;
         $task->title = $request->title;
@@ -69,11 +75,24 @@ class TaskController extends Controller
 
     function update(Request $request, $id)
     {
+        //バリデーションを追加
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'contents' => 'required|string',
+            'image_at' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // 画像のサイズや拡張子のバリデーション
+        ]);
+
         $task = Task::find($id);
 
         $task->title = $request->title;
         $task->contents = $request->contents;
-        $task->image_at = $request->image_at;
+
+        if ($request->hasFile('image_at')) {
+            // 画像を保存し、ファイルパスを取得
+            $imagePath = $request->file('image_at')->store('images', 'public');
+            $task->image_at = $imagePath; // ファイルパスをデータベースに保存
+        }
+
         $task->save();
 
         return redirect()->route('task.index')->with('success', 'タスクが更新されました。');
