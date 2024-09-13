@@ -18,7 +18,7 @@
     <div class="container">
       <div>
         <form action="{{ route('task.update', $task->id) }}" method="POST" class="row justify-content-center" enctype="multipart/form-data">
-          <h2 class="text-center mt-3 mb-5">EDIT</h2>
+          <h2 class="text-center mt-3 mb-5 fs-1">EDIT</h2>
           @csrf
           @method('put')
 
