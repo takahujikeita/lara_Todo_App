@@ -9,7 +9,7 @@
     
 </head>
 <header class="bg-white p-4 shadow-md flex justify-between items-center">
-    <h1 class="text-3xl font-bold">ToDo</h1>
+    <h1 class="text-3xl font-bold">ToDo-Blog</h1>
     <div class="flex items-center space-x-4">
         {{-- <input type="text" placeholder="検索" class="border border-gray-300 p-2 rounded-md"> --}}
         <a href="{{route('task.create')}}">
@@ -18,7 +18,7 @@
         <div class="relative" >
             @if(Auth::check())
                 <div class="text-gray-700 cursor-pointer" onclick="toggleLogout()" >
-                    {{ Auth::user()->name }}
+                    ユーザー名；{{ Auth::user()->name }}
                 </div>
             @endif
             <div id="logout-menu" class="hidden absolute bg-white border p-2">
