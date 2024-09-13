@@ -12,10 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tasks', function (Blueprint $table) {
-            $table->id();
-            $table->string('task_name');
-            $table->boolean('is_deleted')->default(false);
-            $table->timestamps();
+            $table->bigIncrements('id');                    // PK
+            $table->string('title', 30);                    // タスクの題名, VARCHAR(30)
+            $table->string('contents', 140)->nullable();    // タスクの詳細, VARCHAR(140), NULL許可
+            $table->text('image_at')->nullable();           // 画像, TEXT, NULL許可
+            $table->foreignId('user_id')                    // 外部キーとしてuser_idを定義
+            ->constrained('users');                         // 'users'テーブルのidを参照する外部キー
+            $table->timestamps();                           // created_at と updated_at を自動生成
         });
     }
 
